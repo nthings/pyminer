@@ -1,6 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "my_module",
+        "pyminer",
         "tests",
         ".venv/bin/python"
     ],

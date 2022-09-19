@@ -1,15 +1,16 @@
+SHELL := /bin/zsh
 # Required executables
-ifeq (, $(shell which python))
+ifeq (, $(shell which python3))
  $(error "No python on PATH.")
 endif
-POETRY_CMD := python -m poetry
+POETRY_CMD := python3 -m poetry
 ifeq (, $(shell $(POETRY_CMD)))
  $(error "Poetry not available in Python installation.")
 endif
 
 export LC_ALL = C
 export LANG = C.UTF-8
-PY_FILES := my_module tests
+PY_FILES := pyminer tests
 VERSION := $(shell poetry version --short)
 
 all: clean venv build
@@ -68,7 +69,7 @@ build: test mypy isort black lint
 
 run:
 	@echo Execute package directly
-	$(POETRY_CMD) run python -m my_module
+	$(POETRY_CMD) run python -m pyminer
 
 clear-cache:
 	@echo Clear poetry cache
