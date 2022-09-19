@@ -1,4 +1,8 @@
-SHELL := /bin/zsh
+ifeq ($(GITHUB_ACTIONS),)
+	SHELL := /bin/zsh
+else
+	SHELL := /bin/bash
+endif
 # Required executables
 ifeq (, $(shell which python3))
  $(error "No python on PATH.")
